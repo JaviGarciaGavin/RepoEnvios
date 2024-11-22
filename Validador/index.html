@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link>
+    <title>Insertar en html </title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        table, td, th {
+            border-style: solid;
+            border-collapse: collapse;
+            border-color: black;
+            border-width: 3px;
+            margin-top: 15px;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="formulario">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required><br>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" id="apellidos" required><br>
+        <label for="nacimiento">Año Nacimiento</label>
+        <input type="text" name="nacimiento" id="nacimiento" placeholder="1999" required><br>
+        <label for="sueldo">Sueldo</label>
+        <input type="text" name="sueldo" id="sueldo" required><br><br>
+        <label for="dni">DNI</label>
+        <input type="text" name="dni" id="dni" required><br><br>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required><br><br>
+
+        <button id="envia_formulario" type="button">Enviar consulta</button>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th id="nombre" onclick="orderName()">Nombre</th>
+                <th id="apellido" onclick="ordenarSurname()">Apellidos</th>
+                <th id="nacimiento" onclick="orderBirthDay()">Año nacimiento</th>
+                <th id="sueldo" onclick="orderSalary()">Sueldo</th>
+                <th>DNI</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="lista-empleados"></tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
