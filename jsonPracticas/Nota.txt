@@ -1,0 +1,2 @@
+EL css esta completamente sacado de chatgpt simplemente para que sea agradable a la vista.
+Eso y la función getMessages que simplemente le añado una condición ternaria para que aunque no halla messages en el local storage devuelva aunque sea una array vacio
