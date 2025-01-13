@@ -12,16 +12,16 @@ function displayPosts() {
 
     // Obtener los posts de la API
     fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
-        .then((response) => response.json()) // Convertir la respuesta a JSON
+        .then((response) => response.json()) 
         .then((result) => {
-            // Limpiar el contenedor antes de agregar nuevos posts
+         
             postsContainer.innerHTML = ''; 
-            // Iterar sobre los posts obtenidos
+           
             result.forEach((post) => {
                 const postElement = document.createElement('div');
-                postElement.classList.add('post'); // Añadir clase para CSS
+                postElement.classList.add('post'); 
 
-                // Crear el contenedor para el post
+                
                 postElement.innerHTML = 
                 `
                  <h2>${post.title}</h2>
@@ -30,25 +30,25 @@ function displayPosts() {
                  <div class="comments-container" style="display: none;"></div>
                  `;
 
-                // Agregar el post al contenedor principal
+       
                 postsContainer.appendChild(postElement);
 
-                // Obtener el botón para ver los comentarios
+            
                 const toggleButton = postElement.querySelector('.toggle-comments');
                 const commentsContainer = postElement.querySelector('.comments-container');
 
-                // Añadir un evento para mostrar/ocultar los comentarios
+                //mostrar/ocultar los comentarios
                 toggleButton.addEventListener('click', () => {
-                    // Toggle de visibilidad
+                    // Toggle de visibilidad (Nota para uno mismo:ASIGNARLE LA CLASE CUANDO CREAS EL ELEMENTO ARRIBA)
                     if (commentsContainer.style.display === 'none') {
-                        // Obtener los comentarios de la API
+                        // Literalmente los de los posts pro dentro de un post, postception
+                       
                         fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
                             .then(response => response.json())
                             .then(comments => {
-                                // Limpiar comentarios previos
+                            
                                 commentsContainer.innerHTML = ''; 
 
-                                // Mostrar los comentarios
                                 comments.forEach(comment => {
                                     const commentElement = document.createElement('div');
                                     commentElement.classList.add('comment');
@@ -62,12 +62,12 @@ function displayPosts() {
                                 });
                                 toggleButton.textContent = 'Ocultar Comentarios';
                             })
-                            .catch((error) => console.error('Error al obtener comentarios:', error));
+                            .catch((error) => console.error('No hay comentarios jefe:', error));
                         
-                        // Mostrar el contenedor de comentarios
+                        //Cambiar el estilo del bloque
                         commentsContainer.style.display = 'block';
                     } else {
-                        // Ocultar los comentarios
+
                         commentsContainer.style.display = 'none';
                         toggleButton.textContent = 'Comentarios';
                     }
