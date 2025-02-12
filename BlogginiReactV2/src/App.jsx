@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Comentarios from "./Comentarios";  // Importamos el componente Comentarios
 
 const App = () => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-  
-  // Obtener los posts y los usuarios
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
@@ -14,7 +14,6 @@ const App = () => {
       .then((response) => response.json())
       .then((usersData) => setUsers(usersData));
   }, []);
-
 
   const getAuthorName = (userId) => {
     const user = users.find((user) => user.id === userId);
@@ -30,6 +29,7 @@ const App = () => {
             <h2>{post.title}</h2>
             <p>{post.body}</p>
             <p><strong>Autor:</strong> {getAuthorName(post.userId)}</p>
+            <Comentarios postId={post.id} />
           </div>
         ))}
       </div>
