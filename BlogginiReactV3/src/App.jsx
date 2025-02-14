@@ -56,7 +56,7 @@ const App = () => {
         </div>
       </div>
 
-      {/* Definimos las rutas para el perfil */}
+  
       <Routes>
         <Route path="/perfil/:userId" element={<PerfilUsuario />} />
       </Routes>
